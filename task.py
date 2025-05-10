@@ -8,7 +8,7 @@ model = torch.hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True)
 model.eval()
 
 # Load input image
-image_path = r'C:\SK\Python\int_task\image.jpg'  
+image_path = r'C:\SK\Python\int_task\sample.jpg'  
 image = cv2.imread(image_path)
 if image is None:
     print(f"Error: Could not load image from {image_path}")
@@ -31,10 +31,10 @@ else:
         confidence = row['confidence']
 
         # Draw bounding box
-        cv2.rectangle(image, (xmin, ymin), (xmax, ymax), (0, 255, 0), 2)
+        cv2.rectangle(image, (xmin, ymin), (xmax, ymax), (255, 0, 0), 2)
         # Put label
         text = f"{label} {confidence:.2f}"
-        cv2.putText(image, text, (xmin, ymin - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 0), 2)
+        cv2.putText(image, text, (xmin, ymin - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 0, 0), 2)
 
     # Save output
     output_path = 'output.jpg'
